@@ -123,10 +123,13 @@ void draw() {
       text("Enter the next.", width/2, (height/2)-50);
     }
     if (c == 1) {
-      text("Result", width/2, (height/2)-100);
-      text("answer : "+ "NL" + "-" + "G" + "-" + "1" + "-" + first_score, width/2, height/2);
-      text("answer : "+ "NL" + "-" + "G" + "-" + "2" + "-" + second_score, width/2, (height/2)+50);
-      alert("問題表示時刻"+background_Question_Time+"\n"+"回答時間"+background_Question_Answer_Time+"\n"+"回答"+background_Question_Answer);
+      size(1, 1);
+      document.getElementById('Result_area').innerHTML = "Result";
+      document.getElementById('Log1_area').innerHTML = "answer :"+ "NL" + "-" + "G" + "-" + "1" + "-" + first_score;
+      document.getElementById('Log2_area').innerHTML = "answer :"+ "NL" + "-" + "G" + "-" + "2" + "-" + second_score;
+      document.getElementById('Question_area').innerHTML = "問題表示時刻"+background_Question_Time;
+      document.getElementById('AnswerTime_area').innerHTML = "回答時間"+background_Question_Answer_Time;
+      document.getElementById('Answer_area').innerHTML = "回答"+background_Question_Answer ;
       noLoop();
     }
   }
@@ -265,6 +268,12 @@ void mouseReleased() {
 
     </script>
   <canvas></canvas>
+  <div id="Result_area"></div>
+  <div id="Log1_area"></div>
+  <div id="Log2_area"></div>
+  <div id="Answer_area"></div>
+  <div id="AnswerTime_area"></div>
+  <div id="Question_area"></div>
 </body>
 
 </html>
