@@ -206,10 +206,6 @@ void keyReleased() {
         answer = "";
         right = false;
       }
-    } else if (keyCode == BACKSPACE) {
-      if (answer.length() > 0) {
-        answer = answer.substring(0, answer.length()-1);
-      }
     } else {
       answer = answer + str(keydata);
     }
