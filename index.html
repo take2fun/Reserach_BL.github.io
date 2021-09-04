@@ -52,7 +52,15 @@ int scene_count = 0;
 boolean right = true;
 boolean presure = true;
 
-int background_Question_Time[] = {0};
+
+
+String Question = "";
+String Question_example = "";
+
+String background_Question[] = {};
+String background_Question_example[] = {};
+String background_Question_Time[] = {"0"};
+
 String background_Question_Answer[] = {};
 String background_Question_Answer_Time[] = {};
 
@@ -66,6 +74,10 @@ void setup() {
   background(255);
   x = int(random(10, 100));
   y = int(random(10, 100));
+  Question = str(x)+"+"+str(y);
+  Question_example = str(x + y);
+  background_Question = append(background_Question, Question);
+  background_Question_example = append(background_Question_example, Question_example);
   PFont font = createFont("utf-8", 50);
   textFont(font);
 }
@@ -128,6 +140,8 @@ void draw() {
       document.getElementById('Log1_area').innerHTML = "answer :"+ "NL" + "-" + "G" + "-" + "1" + "-" + first_score;
       document.getElementById('Log2_area').innerHTML = "answer :"+ "NL" + "-" + "G" + "-" + "2" + "-" + second_score;
       document.getElementById('Question_area').innerHTML = "問題表示時刻"+background_Question_Time;
+      document.getElementById('Question2_area').innerHTML = "表示問題"+background_Question;
+      document.getElementById('Example_area').innerHTML = "正解例"+background_Question_example;
       document.getElementById('AnswerTime_area').innerHTML = "回答時間"+background_Question_Answer_Time;
       document.getElementById('Answer_area').innerHTML = "回答"+background_Question_Answer ;
       noLoop();
@@ -194,11 +208,15 @@ void keyReleased() {
       if (x+y == int(answer)) {
         background_Question_Answer_Time = append(background_Question_Answer_Time, str(int(basic_time)));
         background_Question_Answer = append(background_Question_Answer, answer);
-        background_Question_Time = append(background_Question_Time,int(basic_time));
+        background_Question_Time = append(background_Question_Time,str(int(basic_time)));
         num += 1;
         answer = "";
         x = int(random(10, 100));
         y = int(random(10, 100));
+        Question = str(x)+"+"+str(y);
+        Question_example = str(x + y);
+        background_Question = append(background_Question, Question);
+        background_Question_example = append(background_Question_example, Question_example);
         right = true;
       } else {
         background_Question_Answer_Time = append(background_Question_Answer_Time, str(int(basic_time))+"*");
@@ -236,9 +254,14 @@ void keyReleased() {
         }
         x = int(random(10, 100));
         y = int(random(10, 100));
+        background_Question = append(background_Question, "/");
+        background_Question_example = append(background_Question_example, "/");
+        
+        
         background_Question_Answer_Time = append(background_Question_Answer_Time, "/");
         background_Question_Answer = append(background_Question_Answer, "/");
-        background_Question_Time = append(background_Question_Time,0);
+        background_Question_Time = append(background_Question_Time,"/");
+        background_Question_Time = append(background_Question_Time,"0");
       }
     }
   }
@@ -267,9 +290,11 @@ void mouseReleased() {
   <div id="Result_area"></div>
   <div id="Log1_area"></div>
   <div id="Log2_area"></div>
+  <div id="Question1_area"></div>
+  <div id="Question2_area"></div>
+  <div id="Example_area"></div>
   <div id="Answer_area"></div>
   <div id="AnswerTime_area"></div>
-  <div id="Question_area"></div>
 </body>
 
 </html>
