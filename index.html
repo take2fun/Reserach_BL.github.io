@@ -254,8 +254,12 @@ void keyReleased() {
         }
         x = int(random(10, 100));
         y = int(random(10, 100));
+        Question = str(x)+"+"+str(y);
+        Question_example = str(x + y);
         background_Question = append(background_Question, "/");
         background_Question_example = append(background_Question_example, "/");
+        background_Question = append(background_Question, Question);
+        background_Question_example = append(background_Question_example, Question_example);
         
         
         background_Question_Answer_Time = append(background_Question_Answer_Time, "/");
